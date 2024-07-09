@@ -2,6 +2,8 @@ A script to convert SPT 3.8 profiles to SPT 3.9.
 
 The implementation is just enough to convert my own profiles. There may be more problems, especially if you use custom content such as items, traders or quests.
 
+Use at your own risk. If you are not sure what you are doing, make a backup of your profiles.
+
 If you manage to encounter and fix other problems, feel free to contribute to this script.
 
 # Prerequisites
