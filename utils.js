@@ -11,6 +11,23 @@ function tryFixRole(role) {
     return role;
 }
 
+function tryFixGpCoins(obj) {
+    if (typeof obj != 'object' || obj == null) {
+        return;
+    }
+
+    if (obj._tpl == '5d235b4d86f7742e017bc88a') {
+        delete obj.upd.Resource;
+        if (!obj.upd.StackObjectsCount) {
+            obj.upd.StackObjectsCount = 1;
+        }
+    }
+
+    for (const c of Object.values(obj)) {
+        tryFixGpCoins(c);
+    }
+}
+
 /** Prints error message, help message and exits */
 function exit(error) {
     console.log(error);
@@ -53,4 +70,4 @@ async function showPrompt(rl, prompt) {
     });
 }
 
-export { tryFixRole, exit, ask };
+export { tryFixRole, exit, ask, tryFixGpCoins };

@@ -1,5 +1,5 @@
 import fs from 'fs/promises';
-import { tryFixRole, exit, ask } from './utils.js';
+import { tryFixRole, tryFixGpCoins, exit, ask } from './utils.js';
 
 const sourceFile = process.argv[2];
 const destFile = process.argv[3];
@@ -33,6 +33,8 @@ if (!pmc.moneyTransferLimitData) {
         resetInterval: 86400
     };
 }
+
+tryFixGpCoins(profile);
 
 const result = JSON.stringify(profile, null, '\t');
 
