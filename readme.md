@@ -4,9 +4,13 @@ The implementation is just enough to convert my own profiles. There may be more 
 
 If you manage to encounter and fix other problems, feel free to contribute to this script.
 
-# Usage
+# Prerequisites
+1. Have an installation of SPT 3.8 or at least its profile files.
+1. New installation of SPT 3.9, separate from SPT 3.8.
 1. Install [nodejs](https://nodejs.org/)
-1. Clone this repository
+
+# Usage
+1. Clone or download this repository
 1. Make sure SPT server 3.9 is not running.
 1. Open the terminal in the root directory and run: 
     ```
