@@ -1,4 +1,4 @@
-A script to convert SPT 3.8 profiles to SPT 3.9. 
+A script to convert SPT 3.8 profiles to be compatible with SPT 3.9. 
 
 The implementation is just enough to convert my own profiles. There may be more problems, especially if you use custom content such as items, traders or quests.
 
@@ -16,12 +16,13 @@ If you manage to encounter and fix other problems, feel free to contribute to th
 1. Make sure SPT server 3.9 is not running.
 1. Open the terminal in the root directory and run: 
     ```
-    node convertProfile [SPT 3.8 profile] [SPT 3.9 profile directory]
+    node convertProfile [input profile] [output profile]
     ```
-    The 3.9 profile will be saved into the target directory with the same name as the original 3.8 profile
+    The output profile, compatible with SPT 3.9, will be saved into the output file. You may specify the same file for input and output, in this case the profile will be updated in place.
 
     Example: 
     ```
-    node convertProfile E:\Games\SPT\user\profiles\660c886400014ca378101db4.json 'E:\Games\SPT 3.9.0\user\profiles'
+    node convertProfile E:\Games\SPT\user\profiles\660c886400014ca378101db4.json E:\Games\SPT_3.9.0\user\profiles\660c886400014ca378101db4.json
     ```
-1. Start SPT, in the launcher select the converted profile and launch the game.
+1. Move the converted profile into the SPT 3.9 profile directory if it's not there already.
+1. Start SPT 3.9, in the launcher select the converted profile and launch the game.
