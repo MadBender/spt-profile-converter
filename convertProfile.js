@@ -18,7 +18,9 @@ const profile = JSON.parse(await fs.readFile(sourceFile));
 const characters = profile.characters;
 for (const character of Object.values(characters)) {
     const eft = character.Stats.Eft;
-    eft.DeathCause.Role = tryFixRole(eft.DeathCause.Role);
+    if (eft.DeathCause != null) {
+        eft.DeathCause.Role = tryFixRole(eft.DeathCause.Role);
+    }
     for (const victim of eft.Victims) {
         victim.Role = tryFixRole(victim.Role);
     }
