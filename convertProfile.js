@@ -24,6 +24,16 @@ for (const character of Object.values(characters)) {
     }
 }
 
+const pmc = characters.pmc;
+if (!pmc.moneyTransferLimitData) {
+    pmc.moneyTransferLimitData = {
+        nextResetTime: Math.floor(new Date().valueOf() / 1000),
+        remainingLimit: 1000000,
+        totalLimit: 1000000,
+        resetInterval: 86400
+    };
+}
+
 const result = JSON.stringify(profile, null, '\t');
 
 const destExists = await fs.stat(destFile).then(() => true).catch(() => false);
