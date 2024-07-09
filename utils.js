@@ -18,13 +18,23 @@ function tryFixGpCoins(obj) {
 
     if (obj._tpl == '5d235b4d86f7742e017bc88a') {
         delete obj.upd.Resource;
-        if (!obj.upd.StackObjectsCount) {
+        if (obj.upd.StackObjectsCount == null) {
             obj.upd.StackObjectsCount = 1;
         }
     }
 
     for (const c of Object.values(obj)) {
         tryFixGpCoins(c);
+    }
+}
+
+function tryFixPmcInfo(profile) {
+    const info = profile.characters.pmc.Info;
+    if (info.isMigratedSkills == null) {
+        info.isMigratedSkills = false;
+    }
+    if (info.SelectedMemberCategory == null) {
+        info.SelectedMemberCategory = info.MemberCategory;
     }
 }
 
@@ -70,4 +80,4 @@ async function showPrompt(rl, prompt) {
     });
 }
 
-export { tryFixRole, exit, ask, tryFixGpCoins };
+export { tryFixRole, exit, ask, tryFixGpCoins, tryFixPmcInfo };

@@ -1,5 +1,5 @@
 import fs from 'fs/promises';
-import { tryFixRole, tryFixGpCoins, exit, ask } from './utils.js';
+import { tryFixRole, tryFixGpCoins, exit, ask, tryFixPmcInfo } from './utils.js';
 
 const sourceFile = process.argv[2];
 const destFile = process.argv[3];
@@ -25,7 +25,7 @@ for (const character of Object.values(characters)) {
 }
 
 const pmc = characters.pmc;
-if (!pmc.moneyTransferLimitData) {
+if (pmc.moneyTransferLimitData == null) {
     pmc.moneyTransferLimitData = {
         nextResetTime: Math.floor(new Date().valueOf() / 1000),
         remainingLimit: 1000000,
@@ -35,6 +35,7 @@ if (!pmc.moneyTransferLimitData) {
 }
 
 tryFixGpCoins(profile);
+tryFixPmcInfo(profile);
 
 const result = JSON.stringify(profile, null, '\t');
 
