@@ -2,13 +2,14 @@ import readline from 'readline';
 
 
 /** Fixes errors like `converting value "sptBear" to type 'EFT.WildSpawnType'. Path '[1].Stats.Eft.DeathCause.Role'` */
-function tryFixRole(role) {
-    switch (role) {
+function tryFixWildSpawnType(type) {
+    switch (type) {
         case 'sptBear':
+            return 'pmcBEAR';
         case 'sptUsec':
-            return 'pmcbot';
+            return 'pmcUSEC';
     }
-    return role;
+    return type;
 }
 
 function tryFixGpCoins(obj) {
@@ -80,4 +81,4 @@ async function showPrompt(rl, prompt) {
     });
 }
 
-export { tryFixRole, exit, ask, tryFixGpCoins, tryFixPmcInfo };
+export { tryFixWildSpawnType, exit, ask, tryFixGpCoins, tryFixPmcInfo };

@@ -1,5 +1,5 @@
 import fs from 'fs/promises';
-import { tryFixRole, tryFixGpCoins, exit, ask, tryFixPmcInfo } from './utils.js';
+import { tryFixWildSpawnType, tryFixGpCoins, exit, ask, tryFixPmcInfo } from './utils.js';
 
 const sourceFile = process.argv[2];
 const destFile = process.argv[3];
@@ -19,10 +19,10 @@ const characters = profile.characters;
 for (const character of Object.values(characters)) {
     const eft = character.Stats.Eft;
     if (eft.DeathCause != null) {
-        eft.DeathCause.Role = tryFixRole(eft.DeathCause.Role);
+        eft.DeathCause.Role = tryFixWildSpawnType(eft.DeathCause.Role);
     }
     for (const victim of eft.Victims) {
-        victim.Role = tryFixRole(victim.Role);
+        victim.Role = tryFixWildSpawnType(victim.Role);
     }
 }
 
